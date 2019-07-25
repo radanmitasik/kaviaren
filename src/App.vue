@@ -1,31 +1,50 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <header class="header">
+      <app-title />
+      <app-navigation />
+    </header>
+    <section>
+      <router-view />
+    </section>
   </div>
 </template>
 
+<script>
+import AppTitle from '@/components/App/AppTitle'
+import AppNavigation from '@/components/App/AppNavigation'
+
+export default {
+  name: 'App',
+
+  components: {
+    AppTitle,
+    AppNavigation
+  },
+
+  metaInfo: {
+    title: 'Kaviaren',
+    titleTemplate: 'Kaviaren - %s'
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.ttf')
 }
-#nav {
-  padding: 30px;
+body {
+  margin: 0;
+  padding: 0;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.header {
+  background: darkblue;
+  padding: 0 10px;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.header::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 </style>
